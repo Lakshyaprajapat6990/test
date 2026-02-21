@@ -1,5 +1,5 @@
 {
   "env": {
-    "CLIENT_URL": "https://www.devyogam.com"
+    "CLIENT_URL": "https://www.devyogam.com,https://devyogam.com,http://localhost:3000"
   }
 }

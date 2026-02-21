@@ -16,9 +16,25 @@ const swaggerUi = require("swagger-ui-express");
 const app = express();
 
 // Middlewares
+// Parse multiple origins from CLIENT_URL environment variable
+const allowedOrigins = (process.env.CLIENT_URL || "http://localhost:3000")
+  .split(",")
+  .map((url) => url.trim());
+
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:3000",
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+      
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        // Log for debugging
+        console.log("CORS rejected origin:", origin);
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
