@@ -1,5 +1,5 @@
 {
   "env": {
-    "CLIENT_URL": "https://www.devyogam.com,https://devyogam.com,http://localhost:3000"
+    "CLIENT_URL": "https://www.devyogam.com,https://devyogam.com,https://dev-yogam.vercel.app,http://localhost:3000"
   }
 }
